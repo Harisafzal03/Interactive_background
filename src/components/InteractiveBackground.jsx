@@ -66,8 +66,8 @@ const InteractiveBackground = () => {
           }
         }
 
-        this.x += this.directionX * 1.25; 
-        this.y += this.directionY * 1.25; 
+        this.x += this.directionX * 1; 
+        this.y += this.directionY * 1; 
         this.draw();
       }
     }
@@ -76,7 +76,8 @@ const InteractiveBackground = () => {
       particlesArray = [];
       const colors = ['#0000FF', '#00FF00', '#800080']; 
       for (let i = 0; i < numberOfParticles; i++) {
-        const size = (Math.random() * 0.125) + 0.0125;
+        const size = (Math.random() * (0.03125 - 0.003125)) + 0.003125;
+
 
         const x = Math.random() * (window.innerWidth - size * 2);
         const y = Math.random() * (window.innerHeight - size * 2);
