@@ -110,19 +110,19 @@ const InteractiveBackground = () => {
       }
     }
 
-    function calculateNumberOfParticles(width) {
-        if (width >= 1470) { 
-          return 700;
-        } else if (width >= 1024) { 
+    function calculateNumberOfParticles() {
+        const area = canvas.width * canvas.height;
+        if (area >= 2000000) { 
+          return 900;
+        } else if (area >= 1000000) { 
           return 400;
-        } else if (width >= 768) { 
+        } else if (area >= 500000) { 
           return 200;
-        } else if (width >= 640) { 
-          return 100;
-        } else { 
-          return 80;
+        } else {
+          return 100; 
         }
       }
+      
 
     function init() {
       particlesArray = [];
@@ -186,8 +186,18 @@ const InteractiveBackground = () => {
       init();
     });
 
+    const handleMouseMove = (event) => {
+        mouse.x = event.x;
+        mouse.y = event.y;
+        // Increase particles if mouse is moving fast
+        if (Math.abs(mouse.x - event.x) > 10 || Math.abs(mouse.y - event.y) > 10) {
+          numberOfParticles = Math.min(numberOfParticles + 10, 700);
+          init();
+        }
+      };
+
     return () => {
-      window.removeEventListener('mousemove', () => {});
+      window.removeEventListener('mousemove',handleMouseMove);
       window.removeEventListener('mousedown', () => {});
       window.removeEventListener('mouseup', () => {});
       window.removeEventListener('resize', () => {});
