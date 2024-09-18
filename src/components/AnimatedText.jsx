@@ -31,7 +31,7 @@ const AnimatedText = () => {
   });
 
   return (
-    <div className="absolute text-center mb-40 z-10 select-none">
+    <div className="absolute text-center z-10 select-none">
       <animated.h1
         style={{
           ...titleBounce,
