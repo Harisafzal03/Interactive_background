@@ -111,16 +111,16 @@ const InteractiveBackground = () => {
     }
 
     function calculateNumberOfParticles(width) {
-        if (width >= 1400) { 
+        if (width >= 1470) { 
           return 700;
         } else if (width >= 1024) { 
-          return 500;
+          return 400;
         } else if (width >= 768) { 
-          return 300;
-        } else if (width >= 640) { 
           return 200;
-        } else { 
+        } else if (width >= 640) { 
           return 100;
+        } else { 
+          return 80;
         }
       }
 
