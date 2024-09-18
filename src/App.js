@@ -1,17 +1,18 @@
 import React from 'react';
-import InteractiveBackground from './components/InteractiveBackground';
-import AnimatedText from './components/AnimatedText';
-import InkEffect from './components/InkEffect';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/home';
+import About from './pages/about';
+// import Navbar from './components/Navbar';
 
-function App() {
-
+const App = () => {
   return (
-    <div className="App relative flex items-center justify-center h-screen">
-      <InteractiveBackground />
-      {/* <InkEffect/> */}
-      <AnimatedText />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/parallex" element={<About />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
