@@ -10,7 +10,7 @@ const InteractiveBackground = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     let particlesArray = [];
-    const numberOfParticles = 700;
+    let numberOfParticles = calculateNumberOfParticles(window.innerWidth);
 
     const mouse = {
       x: null,
@@ -69,14 +69,21 @@ const InteractiveBackground = () => {
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        if (mousePressed.current && distance < 350) {
-          this.size = Math.min(this.originalSize * 2000, this.size + 5);
-          this.alpha = 0.8;
-          if (mousePressed.current && distance < 200) {
-            this.size = Math.min(this.originalSize * 4500, this.size + 5);
-            this.color = '#000000'; 
-            this.alpha = 1;
-          }
+        if (mousePressed.current) {
+            if (distance < 200) {
+                this.size = Math.min(this.originalSize * 6000, this.size + 5);
+                this.color = '#000000'; 
+                this.alpha = 1;
+              } else if (distance < 350) {
+                this.size = Math.min(this.originalSize * 2000, this.size + 5);
+                this.alpha = 0.8;
+              } else if (distance < 450) {
+                this.size = Math.min(this.originalSize * 1000, this.size + 5);
+                this.alpha = 0.8;
+              } else {
+                this.size = this.originalSize;
+                this.alpha = 1;
+              }
         } else {
           this.size = this.originalSize;
           this.alpha = 1;
@@ -102,6 +109,20 @@ const InteractiveBackground = () => {
         this.draw();
       }
     }
+
+    function calculateNumberOfParticles(width) {
+        if (width >= 1280) { 
+          return 700;
+        } else if (width >= 1024) { 
+          return 600;
+        } else if (width >= 768) { 
+          return 400;
+        } else if (width >= 640) { 
+          return 300;
+        } else { 
+          return 100;
+        }
+      }
 
     function init() {
       particlesArray = [];
