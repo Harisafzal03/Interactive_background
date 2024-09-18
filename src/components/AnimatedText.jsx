@@ -31,7 +31,7 @@ const AnimatedText = () => {
   });
 
   return (
-    <div className="absolute text-center mb-40 z-10">
+    <div className="absolute text-center mb-40 z-10 select-none">
       <animated.h1
         style={{
           ...titleBounce,
@@ -44,7 +44,7 @@ const AnimatedText = () => {
         GEOMETRIC<br />DESIGN
       </animated.h1>
 
-      <div className="mt-6 text-sm sm:text-base font-normal text-[#04253C] tracking-[0.5em]">
+      <div className="mt-6 text-sm sm:text-base font-normal text-[#04253C] tracking-[0.5em] select-none">
         {subtitleTrail.map((style, index) => (
           <animated.p key={index} style={style}>
             {subtitleLines[index]}
@@ -62,7 +62,7 @@ const AnimatedText = () => {
         }}
         className="mt-8 px-8 py-3 text-white font-medium transition-all duration-300"
       >
-        <p className="text-white uppercase tracking-widest opacity-100">Get Addon</p>
+        <p className="text-white uppercase tracking-widest opacity-100 select-none">Get Addon</p>
       </animated.button>
     </div>
   );
